@@ -21,6 +21,8 @@ public class BookFunction {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("====== 도서 등록 메뉴 ======");
 		for(int i = 0; i < books.length; i++) {
+			System.out.print("책 번호 : ");
+			int bookNum = sc.nextInt();
 			System.out.print("책 제목 : ");
 			String bookName = sc.next();
 			sc.nextLine();
@@ -33,6 +35,7 @@ public class BookFunction {
 			System.out.println("============");
 			
 			books[i] = new Book();
+			books[i].setBookNum(bookNum);
 			books[i].setBookName(bookName);
 			books[i].setAuthor(author);
 			books[i].setGenre(genre);		
@@ -45,6 +48,7 @@ public class BookFunction {
 		System.out.println("====== 도서 현황 ======");
 		System.out.println("현재의 도서 현황 입니다.");
 		for(int i = 0; i < books.length; i++) {
+			int num = books[i].getBookNum();
 			String name = books[i].getBookName();
 			String author = books[i].getAuthor();
 			String genre = books[i].getGenre();
@@ -59,13 +63,12 @@ public class BookFunction {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("====== 도서 대여 메뉴 ======");
 		System.out.println("대여를 원하시는 도서를 선택해주세요.");
-		System.out.println("1 ~ 3의 숫자를 입력해주세요.");
-		System.out.println("1. " + books[0].getBookName());
-		System.out.println("2. " + books[1].getBookName());
-		System.out.println("3. " + books[2].getBookName());
-		System.out.print("선택 : ");
-		int selectBook = sc.nextInt();
-		switch(selectBook) {
+		for(int i = 0; i < books.length; i++) {
+			System.out.println(books[i].getBookNum() + ". " + books[i].getBookName());
+		}
+			System.out.print("선택 : ");
+			int selectBook = sc.nextInt();
+			switch(selectBook) {
 			case 1:
 				System.out.println(books[0].getBookName() + "을/를 대여하시겠습니까?");
 				System.out.print("(Y/N) : ");
@@ -76,7 +79,7 @@ public class BookFunction {
 					break;
 				case 'N':
 					break;
-			}
+				}
 				break;
 			case 2:
 				System.out.println(books[1].getBookName() + "을/를 대여하시겠습니까?");
@@ -88,7 +91,7 @@ public class BookFunction {
 					break;
 				case 'N':
 					break;
-			}
+				}
 				break;
 			case 3:
 				System.out.println(books[2].getBookName() + "을/를 대여하시겠습니까?");
@@ -105,8 +108,9 @@ public class BookFunction {
 			default:
 				System.out.println("1 ~ 3사이의 숫자를 입력해주세요.");
 				break;
+			}
 			
-		}
+		
 	}
 	public void programExit() {
 		System.out.println("프로그램을 종료합니다.");

@@ -2,6 +2,7 @@ package com.kh.jhs;
 
 public class Book {
 
+	private int bookNum;
 	private String bookName;
 	private String author;
 	private String genre;
@@ -29,6 +30,9 @@ public class Book {
 //		this.stockedDate = stockedDate;
 //	}
 	
+	public int getBookNum() {
+		return bookNum;
+	}
 	public String getBookName() {
 		return bookName;
 	}
@@ -42,6 +46,10 @@ public class Book {
 		return stockedDate;
 	}
 	
+	
+	public void setBookNum(int bookNum) {
+		this.bookNum = bookNum;
+	}
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
 	}
